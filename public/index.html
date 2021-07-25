@@ -1,10 +1,23 @@
-<!doctype html>
-<html>
+<html lang="en">
 <head>
-    <title></title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imageboard</title>
+   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+<h1>My Imageboard</h1>
+    <div id='main'>
+        <!-- Looping in Vue -->
+            <div class="board" v-for="image in images" :key="image.id">
+                <img :src="image.url">
+                <p>{{image.title}}</p>
+            </div>
+    </div>
     <script src="/js/vue.js"></script>
     <script src="/js/axios.min.js"></script>
+     <script src="/js/script.js"></script>
 </body>
+
 </html>

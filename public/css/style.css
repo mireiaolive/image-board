@@ -1,0 +1,19 @@
+* {
+    background-color: lightgoldenrodyellow;
+}
+
+img {
+    width: 250px;
+    height: 200px;
+}
+
+#main {
+    display: flex;
+    flex-direction: row;
+}
+
+.board {
+    padding: 10px;
+    margin: 20px;
+    border: 1px solid black;
+}
