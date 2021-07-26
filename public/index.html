@@ -23,7 +23,7 @@
         </div>
         <!-- Looping in Vue -->
         <div class="board">
-            <div  class="board-items" v-for="image in images" :key="image.id">
+            <div  class="board-items" v-for="image in images.reverse()" :key="image.id">
                 <img :src="image.url">
                 <p>{{image.title}}</p>
             </div>
