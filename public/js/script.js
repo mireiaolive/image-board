@@ -7,6 +7,10 @@ console.log("script is linked");
         el: "#main",
         data: {
             images: [],
+            title: "",
+            description: "",
+            username: "",
+            file: null,
         },
         mounted: function () {
             //console.log("here vue renders on our screen");
@@ -25,6 +29,24 @@ console.log("script is linked");
         },
         methods: {
             //here we store our functions
+            upImage: function () {
+                var title = this.title;
+                var description = this.description;
+                var username = this.username;
+                var file = this.file;
+
+                var formData = new formData();
+                formData.append("title", title);
+                formData.append("description", description);
+                formData.append("username", username);
+                formData.append("file", file);
+                axios.post("/upload", formData).then(({ data }) => {
+                    //take images object returned, put it into the existing array
+                });
+            },
+            fileSelection: function (e) {
+                this.files = e.target.files[0];
+            },
         },
     });
 })();

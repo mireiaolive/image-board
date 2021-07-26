@@ -8,12 +8,26 @@
 </head>
 <body>
 <h1>My Imageboard</h1>
+<h2>Add here an image now</h2>
     <div id='main'>
+        <div class="form">
+        <!-- v-model directive to automatically collect the values that the user enters -->
+            <label for="title">Title</label>    
+            <input v-model="title" name="title" id="title">
+            <label for="description">Description</label>    
+            <input v-model="description" name="description" id="description">
+            <label for="username">Username</label>    
+            <input v-model="username" name="username" id="username">
+            <input class="display" type="file" accept="image/*" @change="fileSelection"id="username">
+            <button class="display" @click="upImage">UPLOAD</button>
+        </div>
         <!-- Looping in Vue -->
-            <div class="board" v-for="image in images" :key="image.id">
+        <div class="board">
+            <div  class="board-items" v-for="image in images" :key="image.id">
                 <img :src="image.url">
                 <p>{{image.title}}</p>
             </div>
+        </div>
     </div>
     <script src="/js/vue.js"></script>
     <script src="/js/axios.min.js"></script>
