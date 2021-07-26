@@ -35,7 +35,7 @@ console.log("script is linked");
                 var username = this.username;
                 var file = this.file;
 
-                var formData = new formData();
+                var formData = new FormData();
                 formData.append("title", title);
                 formData.append("description", description);
                 formData.append("username", username);

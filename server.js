@@ -1,12 +1,11 @@
 const express = require("express");
 const app = express();
 const db = require("./db.js");
-
-//by default this is going to look for a index.html file
-
 const multer = require("multer");
 const uidSafe = require("uid-safe");
 const path = require("path");
+const s3 = require("./s3");
+//by default this is going to look for a index.html file
 
 const diskStorage = multer.diskStorage({
     destination: function (req, file, callback) {
@@ -36,8 +35,8 @@ app.get("/home", (req, res) => {
     // res.json is how we send a response to the client / Vue
     db.getImages()
         .then(({ rows }) => {
-            //console.log("we are checking for info");
-            //console.log("let's see result", result.rows);
+            console.log("we are checking for info");
+            //console.log("let's see result", rows);
             //res.json is how we send a response to the client
             res.json(rows);
         })
@@ -47,14 +46,22 @@ app.get("/home", (req, res) => {
         });
 });
 
-app.post("/upload", uploader.single("file"), (req, res) => {
+app.post("/upload", uploader.single("file"), s3.upload, (req, res) => {
     console.log(req.body, req, file);
-    if (!req.file) {
-        console.log("file is not there");
-        res.sendStatus(500);
-    } else {
-        //here it worked
-    }
+    awsUrl = "https://s3.amazonaws.com/spicedling";
+    const fullUrl = awsUrl + req.file;
+
+    db.getUploaded(
+        req.body.title,
+        req.body,
+        description,
+        req.body.username,
+        fullUrl
+    )
+        .then(({ rows }) => {
+            console.log("what we see", rows);
+        })
+        .catch((err) => console.log("err", err));
 });
 
 app.listen(8080, () => console.log("Server is listening..."));
