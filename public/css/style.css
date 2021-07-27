@@ -5,7 +5,7 @@
 }
 
 img {
-    width: 420px;
+    width: 400px;
     height: 300px;
     object-fit: cover;
 }
@@ -30,6 +30,7 @@ button {
 .board {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .board-items {
