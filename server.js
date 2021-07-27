@@ -32,12 +32,11 @@ app.use(express.json());
 
 app.get("/home", (req, res) => {
     //console.log("/ route has been hit");
-    // res.json is how we send a response to the client / Vue
+    // res.json is how we send a response to the client
     db.getImages()
         .then(({ rows }) => {
             console.log("we are checking for info");
             //console.log("let's see result", rows);
-            //res.json is how we send a response to the client
             res.json(rows);
         })
         .catch((err) => {
@@ -47,21 +46,30 @@ app.get("/home", (req, res) => {
 });
 
 app.post("/upload", uploader.single("file"), s3.upload, (req, res) => {
-    console.log(req.body, req, file);
-    awsUrl = "https://s3.amazonaws.com/spicedling";
-    const fullUrl = awsUrl + req.file;
+    console.log("request body", req.body, "request file", req.file);
 
     db.getUploaded(
         req.body.title,
-        req.body,
-        description,
+        req.body.description,
         req.body.username,
-        fullUrl
+        `https://s3.amazonaws.com/spicedling/${req.file.filename}`
     )
-        .then(({ rows }) => {
-            console.log("what we see", rows);
+        .then((result) => {
+            //res.json is how we send a response to the client
+            res.json({
+                title: req.body.title,
+                description: req.body.description,
+                username: req.body.username,
+                url: result.rows[0].url,
+            });
         })
         .catch((err) => console.log("err", err));
 });
+/*  if (!req.file) {
+                console.log("file is not there!");
+                res.sendStatus(500);
+            } else {
+                console.log("here it works");
+            } */
 
 app.listen(8080, () => console.log("Server is listening..."));

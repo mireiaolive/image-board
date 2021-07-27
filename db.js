@@ -9,9 +9,11 @@ module.exports.getImages = () => {
     return db.query(`SELECT * FROM images`);
 };
 
-module.exports.getUploaded = (title, description, username, fullUrl) => {
+module.exports.getUploaded = (title, description, username, url) => {
+    //concatenate the url that is the amazon url + the filename
+    console.log("upload images");
     return db.query(
-        `INSERT INTO images (title, description, username, fullUrl) VALUES ($1, $2, $3, $4) RETURNING title, description, username, fullUrl`,
-        [title, description, username, fullUrl]
+        `INSERT INTO images (title, description, username, url) VALUES ($1, $2, $3, $4) RETURNING url`,
+        [title, description, username, url]
     );
 };

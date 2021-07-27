@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>My Imageboard</h1>
-<h2>Add here an image now</h2>
+<h2>Add here an image now!</h2>
     <div id='main'>
         <div class="form">
         <!-- v-model directive to automatically collect the values that the user enters -->
@@ -21,6 +21,7 @@
             <input class="display" type="file" accept="image/*" @change="fileSelection"id="username">
             <button class="display" @click="upImage">UPLOAD</button>
         </div>
+        <h1>{{name}}</h1>
         <!-- Looping in Vue -->
         <div class="board">
             <div  class="board-items" v-for="image in images.reverse()" :key="image.id">

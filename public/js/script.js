@@ -11,6 +11,7 @@ console.log("script is linked");
             description: "",
             username: "",
             file: null,
+            name: "Latest Images",
         },
         mounted: function () {
             //console.log("here vue renders on our screen");
@@ -40,9 +41,21 @@ console.log("script is linked");
                 formData.append("description", description);
                 formData.append("username", username);
                 formData.append("file", file);
-                axios.post("/upload", formData).then(({ data }) => {
-                    //take images object returned, put it into the existing array
-                });
+                axios
+                    .post("/upload", formData)
+                    .then((result) => {
+                        //take images object returned, put it into the existing array
+                        //add it to the images array that's in data
+                        this.images.push({
+                            title: result.data.title,
+                            username: result.data.username,
+                            description: result.data.description,
+                            url: result.data.url,
+                        });
+                    })
+                    .catch((err) => {
+                        console.log("here an err", err);
+                    });
             },
             fileSelection: function (e) {
                 this.files = e.target.files[0];
