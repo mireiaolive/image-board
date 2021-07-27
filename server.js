@@ -47,7 +47,7 @@ app.get("/home", (req, res) => {
 
 app.post("/upload", uploader.single("file"), s3.upload, (req, res) => {
     console.log("request body", req.body, "request file", req.file);
-
+    //concatenate the url that is the amazon url + the filename
     db.getUploaded(
         req.body.title,
         req.body.description,
