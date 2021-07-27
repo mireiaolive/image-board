@@ -11,7 +11,7 @@
 <h2>Add here an image now!</h2>
     <div id='main'>
         <div class="form">
-        <!-- v-model directive to automatically collect the values that the user enters -->
+       
             <label for="title">Title</label>    
             <input v-model="title" name="title" id="title">
             <label for="description">Description</label>    
@@ -19,17 +19,32 @@
             <label for="username">Username</label>    
             <input v-model="username" name="username" id="username">
             <input class="display" type="file" accept="image/*" @change="fileSelection"id="username">
-            <button class="display" @click="upImage">UPLOAD</button>
+            <button class="display" @click="uploadImage">UPLOAD</button>
         </div>
+        
+        
         <h1>{{name}}</h1>
-        <!-- Looping in Vue -->
+ <!----adding component tag in kebab-case-->
+<my-first-component v-if="moodSelected" passing-some-prop="HH" :mood-id="moodSelected" @close="closeMe"></my-first-component>
+      <h3 class="mood" v-for="mood in moods" @click="selectMood(mood.id)">{{mood.title}}</h3>
         <div class="board">
-            <div  class="board-items" v-for="image in images.reverse()" :key="image.id">
+            <div  class="board-items" v-for="image in images" :key="image.id">
                 <img :src="image.url">
                 <p>{{image.title}}</p>
             </div>
         </div>
     </div>
+
+    <script id="my-component-template" type="text/x-template">
+        <div class="component">
+            <h1>Hello I am the first component</h1>
+            <h1 @click="sayParent">to close here from parent</h1>
+            <h2>{{name}}</h2>
+            <h3>{{count}}</h3>
+            <button @click="countUp">Here we count up</button>
+        </div>
+    </script>
+
     <script src="/js/vue.js"></script>
     <script src="/js/axios.min.js"></script>
      <script src="/js/script.js"></script>

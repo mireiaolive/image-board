@@ -31,6 +31,7 @@ button {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: flex-start;
 }
 
 .board-items {
@@ -42,7 +43,8 @@ button {
 
 .form,
 h1,
-h2 {
+h2,
+h3 {
     margin-top: 35px;
     margin-left: 20px;
 }

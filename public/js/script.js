@@ -1,9 +1,31 @@
-// this file will contain all of our Vue code
 console.log("script is linked");
 (function () {
+    Vue.component("my-first-component", {
+        template: "#my-component-template",
+        props: ["passingSomeProp", "moodId"],
+        data: function () {
+            return {
+                name: "Scallion",
+                count: 1,
+            };
+        },
+        mounted: function () {
+            console.log("here first component", this);
+            console.log("prop passed:", this.passProp);
+            console.log("this.moodId:", this.moodId);
+        },
+        methods: {
+            countUp: function () {
+                this.count++;
+            },
+            sayParent: function () {
+                console.log("let the main vue should do something");
+                this.$emit("close");
+            },
+        },
+    });
+
     new Vue({
-        //how we connect our vue code with our container #main in html
-        // data - object that we add any info to that is dynamic / we want to render onscreen
         el: "#main",
         data: {
             images: [],
@@ -12,6 +34,13 @@ console.log("script is linked");
             username: "",
             file: null,
             name: "Latest Images",
+            moodSelected: null,
+            moods: [
+                { id: 1, title: "😁" },
+                { id: 2, title: "🥳" },
+                { id: 3, title: "😶‍🌫️" },
+            ],
+            moodSelected: null,
         },
         mounted: function () {
             //console.log("here vue renders on our screen");
@@ -30,7 +59,7 @@ console.log("script is linked");
         },
         methods: {
             //here we store our functions
-            upImage: function () {
+            uploadImage: function () {
                 var title = this.title;
                 var description = this.description;
                 var username = this.username;
@@ -60,6 +89,17 @@ console.log("script is linked");
             },
             fileSelection: function (e) {
                 this.file = e.target.files[0];
+            },
+            selectMood: function (id) {
+                console.log("id passed to selectMood:", id);
+                this.moodSelected = id;
+            },
+            closeMe: function () {
+                console.log(
+                    "the component emitted close, so we should close the modal in the main vue instance!"
+                );
+                // remember to set the value of moodSelected back to sth falsy in
+                // order to make the component disappear!
             },
         },
     });
