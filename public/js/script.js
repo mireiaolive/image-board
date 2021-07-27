@@ -35,6 +35,7 @@ console.log("script is linked");
                 var description = this.description;
                 var username = this.username;
                 var file = this.file;
+                console.log("here our file", file);
 
                 var formData = new FormData();
                 formData.append("title", title);
@@ -58,7 +59,7 @@ console.log("script is linked");
                     });
             },
             fileSelection: function (e) {
-                this.files = e.target.files[0];
+                this.file = e.target.files[0];
             },
         },
     });

@@ -15,6 +15,7 @@ const s3 = new aws.S3({
 
 exports.upload = (req, res, next) => {
     if (!req.file) {
+        console.log("we see if we dont have a file");
         return res.sendStatus(500);
     }
     console.log("req.file inside upload function in s3.js -->", req.file);
