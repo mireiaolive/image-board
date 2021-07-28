@@ -34,12 +34,14 @@
     </div>
 
     <script id="my-component-template" type="text/x-template">
-        <div class="component">
-            <h1 @click="sayParent">x close</h1>
-            <h1>{{this.imgData.title}}</h1>
-            <img :src=this.imgData.url>
-            <p>{{this.imgData.description}}<p>
-            <p>Uploaded by{{this.imgData.username}} at {{this.imgData.created_at}}</p>
+            <div class="component" id="component "@click="sayParent">
+                <div class="box">
+                <h1>{{this.imgData.title}}</h1>
+                <img :src=this.imgData.url>
+                <p>{{this.imgData.description}}<p>
+                <p>Uploaded by{{this.imgData.username}} at {{this.imgData.created_at}}</p>
+                <p>close here<p>
+             </div>
         </div>
     </script>
 
