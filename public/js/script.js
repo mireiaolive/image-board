@@ -1,4 +1,4 @@
-console.log("script is linked");
+//console.log("script is linked");
 (function () {
     Vue.component("modal-component", {
         template: "#my-component-template",
