@@ -11,7 +11,6 @@
 <h2>Add here an image now!</h2>
     <div id='main'>
         <div class="form">
-       
             <label for="title">Title</label>    
             <input v-model="title" name="title" id="title">
             <label for="description">Description</label>    
@@ -24,9 +23,8 @@
         
         
         <h1>{{name}}</h1>
- <!----adding component tag in kebab-case-->
-<my-first-component v-if="moodSelected" passing-some-prop="HH" :mood-id="moodSelected" @close="closeMe"></my-first-component>
-      <h3 class="mood" v-for="mood in moods" @click="selectMood(mood.id)">{{mood.title}}</h3>
+
+        <modal-component v-if="moodId"  :img-id="moodId" @close="closeMe"></modal-component>
         <div class="board">
             <div  class="board-items" v-for="image in images" :key="image.id">
                 <img :src="image.url">
@@ -36,12 +34,12 @@
     </div>
 
     <script id="my-component-template" type="text/x-template">
-        <div class="component">
-            <h1>Hello I am the first component</h1>
-            <h1 @click="sayParent">to close here from parent</h1>
-            <h2>{{name}}</h2>
-            <h3>{{count}}</h3>
-            <button @click="countUp">Here we count up</button>
+        <div class="component" id="component" @click="sayParent">
+            <h1 @click="sayParent">x close</h1>
+            <h1>{{this.imgData.title}}</h1>
+            <img :src=this.imgData.url>
+            <p>{{this.imgData.description}}<p>
+            <p>Uploaded by{{this.imgData.username}} at {{this.imgData.created_at}}</p>
         </div>
     </script>
 
