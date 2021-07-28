@@ -72,4 +72,16 @@ app.post("/upload", uploader.single("file"), s3.upload, (req, res) => {
                 console.log("here it works");
             } */
 
+app.get("/selection", (req, res) => {
+    console.log("get request looking for id");
+    //we have to do a query to look for the image id
+    db.imageId(req.query.id)
+        .then((results) => {
+            res.json(results.rows[0]);
+        })
+        .catch((err) => {
+            console.log("err", err);
+        });
+});
+
 app.listen(8080, () => console.log("Server is listening..."));

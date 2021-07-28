@@ -6,7 +6,11 @@
         props: ["imageId"],
         data: function () {
             return {
-                imgData: "",
+                url: "",
+                title: "",
+                description: "",
+                username: "",
+                created_at: "",
             };
         },
         mounted: function () {
@@ -14,9 +18,14 @@
             //console.log("prop passed:", this.passProp);
             console.log("this.imageId:", this.imageId);
             axios
-                .get("/home")
-                .then(({ data }) => {
-                    this.imgData = data[this.imageId - 1];
+                .get("/selection", { id: this.imageId })
+                .then((results) => {
+                    console.log("data response", results.data);
+                    this.url = results.data.url;
+                    this.title = results.data.title;
+                    this.description = results.data.description;
+                    this.username = results.data.username;
+                    this.created_at = results.data.created_at;
                 })
                 .catch((err) => {
                     console.log("err", err);
@@ -43,7 +52,7 @@
             file: null,
             name: "Latest Images",
             // properties we added to our data object
-            moodId: true,
+            selectImage: null,
         },
         mounted: function () {
             //console.log("here vue renders on our screen");
@@ -93,11 +102,12 @@
                 this.file = e.target.files[0];
             },
             selectImageId: function (id) {
+                //here we give the id to the child component
                 console.log("id passed to selectImageId:", id);
-                this.moodId = id;
+                this.selectImage = id;
             },
             closeMe: function () {
-                this.moodId = null;
+                this.selectImage = null;
                 console.log("we close the modal in the main vue instance!");
             },
         },

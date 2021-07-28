@@ -24,9 +24,9 @@
         
         <h1>{{name}}</h1>
 
-        <modal-component v-if="moodId"  :img-id="moodId" @close="closeMe"></modal-component>
+        <modal-component v-if="selectImage"  :image-id="selectImage" @close="closeMe"></modal-component>
         <div class="board">
-            <div  class="board-items" v-for="image in images" :key="image.id">
+            <div  class="board-items" v-for="image in images" :key="image.id" @click="selectImageId">
                 <img :src="image.url">
                 <p>{{image.title}}</p>
             </div>
@@ -34,13 +34,12 @@
     </div>
 
     <script id="my-component-template" type="text/x-template">
-            <div class="component" id="component "@click="sayParent">
-                <div class="box">
-                <h1>{{this.imgData.title}}</h1>
-                <img :src=this.imgData.url>
-                <p>{{this.imgData.description}}<p>
-                <p>Uploaded by{{this.imgData.username}} at {{this.imgData.created_at}}</p>
-                <p>close here<p>
+            <div class="box">
+                <h1 class="close" @click="sayParent">x</h1>
+                <h2>Title: {{title}}</h2>
+                <img class="image-board" :src="url" alt="image board">
+                <p>Description: {{description}}<p>
+                <p>Uploaded by{{username}} at {{created_at}}</p>
              </div>
         </div>
     </script>
