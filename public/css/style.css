@@ -28,6 +28,11 @@ button {
     color: white;
 }
 
+.title {
+    background-color: white;
+    color: black;
+}
+
 .board {
     display: flex;
     flex-direction: row;
@@ -36,6 +41,7 @@ button {
 }
 
 .board-items {
+    position: relative;
     padding: 10px;
     margin: 20px;
     border: 1px solid grey;
@@ -45,11 +51,37 @@ button {
 .form,
 h1,
 h2,
-h3 {
+h3,
+h4 {
     margin-top: 35px;
     margin-left: 20px;
 }
 
-.component {
+.box {
+    text-align: center;
     background-color: black;
+    width: 70%;
+    margin: auto;
+    padding: 10px;
+    color: white;
+    position: fixed;
+    top: 20%;
+    left: 15%;
+    z-index: 1;
+}
+
+.close {
+    cursor: pointer;
+    background-color: black;
+    text-align: end;
+    color: white;
+    margin-right: 30px;
+}
+
+.box h1,
+h2,
+p {
+    background-color: black;
+    color: white;
+    text-align: center;
 }

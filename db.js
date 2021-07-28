@@ -18,5 +18,5 @@ module.exports.getUploaded = (title, description, username, url) => {
 };
 
 module.exports.imageId = (id) => {
-    return db.query(`SELECT * FROM images WHERE Id = &{id}`);
+    return db.query(`SELECT * FROM images WHERE id = $1`, [id]);
 };

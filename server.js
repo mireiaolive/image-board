@@ -72,10 +72,11 @@ app.post("/upload", uploader.single("file"), s3.upload, (req, res) => {
                 console.log("here it works");
             } */
 
-app.get("/selection", (req, res) => {
-    console.log("get request looking for id");
+app.get("/selection:id", (req, res) => {
+    console.log("we see req parameter", req.params);
+    //req.params is an object containing parameter values parsed from the URL path
     //we have to do a query to look for the image id
-    db.imageId(req.query.id)
+    db.imageId(req.params.id)
         .then((results) => {
             res.json(results.rows[0]);
         })

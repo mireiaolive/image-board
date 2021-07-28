@@ -13,12 +13,13 @@
                 created_at: "",
             };
         },
+
         mounted: function () {
             console.log("here first component", this);
             //console.log("prop passed:", this.passProp);
             console.log("this.imageId:", this.imageId);
             axios
-                .get("/selection", { id: this.imageId })
+                .get("/selection" + this.imageId)
                 .then((results) => {
                     console.log("data response", results.data);
                     this.url = results.data.url;
