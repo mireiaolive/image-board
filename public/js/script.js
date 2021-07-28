@@ -42,7 +42,8 @@ console.log("script is linked");
             username: "",
             file: null,
             name: "Latest Images",
-            moodId: null,
+            // properties we added to our data object
+            moodId: true,
         },
         mounted: function () {
             //console.log("here vue renders on our screen");
@@ -60,7 +61,6 @@ console.log("script is linked");
                 .catch((err) => console.log("error in imageboard: ", err));
         },
         methods: {
-            //here we store our functions
             uploadImage: function () {
                 var title = this.title;
                 var description = this.description;
@@ -93,14 +93,12 @@ console.log("script is linked");
                 this.file = e.target.files[0];
             },
             selectImageId: function (id) {
-                console.log("id passed to selectMood:", id);
+                console.log("id passed to selectImageId:", id);
                 this.moodId = id;
             },
             closeMe: function () {
                 this.moodId = null;
-                console.log(
-                    "we should close the modal in the main vue instance!"
-                );
+                console.log("we close the modal in the main vue instance!");
             },
         },
     });
