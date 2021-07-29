@@ -85,4 +85,26 @@ app.get("/selection:id", (req, res) => {
         });
 });
 
+app.get("/comments:imageId", (req, res) => {
+    db.getComments(req.params.imageId)
+        .then((results) => {
+            console.log("results", results.rows);
+            res.json(results.rows);
+        })
+        .catch((err) => {
+            console.log("err", err);
+        });
+});
+
+//should insert a new comment into the databse with body
+app.post("/comment", (req, res) => {
+    db.addComment(req.body.image_id, req.body.comment_post, req.body.username)
+        .then((results) => {
+            res.json(results.rows[0]);
+        })
+        .catch((err) => {
+            console.log("err", err);
+        });
+});
+
 app.listen(8080, () => console.log("Server is listening..."));

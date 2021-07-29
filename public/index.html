@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>My Imageboard</h1>
-<h4>Add an image here now!</h4>
+<h1>Add an image here now!</h1>
     <div id='main'>
         <div class="form">
             <label for="title">Title</label>    
@@ -40,8 +40,25 @@
                 <h2>Title: {{title}}</h2>
                 <p>Description: {{description}}<p>
                 <p>Uploaded by {{username}} at {{created_at}}</p>
+                <com-component :comm-id="imageId"></com-component>
              </div>
-        </div>
+    </script>
+
+    <script id="com-template" type="text/x-template">
+        <div class="another-box">
+            <div class="form-comment">
+            <p class="align">Add a comment!</p>
+            <label for="comment" class="label">Comment</label>   
+            <input v-model="commentInput" name="comment" id="comment" placeholder="Username">
+            <label for="username" class="label">Username</label>   
+            <input v-model="username" name="username" id="username" placeholder="Your comment">
+            <button @click="submitComment">Submit</button>
+            <div v-if="comments" class="extra-box" v-for="comment in comments">
+                <p>{{comment.comment_post}}</p>
+                <p>{{comment.created_at}} by {{comment.username}}</p>
+                 </div>
+            </div>
+         </div>
     </script>
 
     <script src="/js/vue.js"></script>

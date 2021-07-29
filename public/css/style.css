@@ -60,12 +60,12 @@ h4 {
 .box {
     text-align: center;
     background-color: black;
+    padding: 20px;
     width: 70%;
     margin: auto;
-    padding: 10px;
     color: white;
     position: fixed;
-    top: 20%;
+    top: 10%;
     left: 15%;
     z-index: 1;
 }
@@ -84,4 +84,40 @@ p {
     background-color: black;
     color: white;
     text-align: center;
+}
+
+.title-comment {
+    background-color: black;
+    font-size: 20px;
+}
+
+.another-box,
+.form-comment {
+    background-color: black;
+    color: white;
+    text-align: left;
+    margin-top: 40px;
+}
+
+.form-comment label,
+.form-comment input {
+    background-color: black;
+    color: white;
+}
+
+.form-comment input {
+    border-radius: 7px;
+    background-color: white;
+    color: grey;
+}
+
+.align {
+    color: grey;
+    padding-bottom: 10px;
+    text-align: left;
+    font-size: 28px;
+}
+
+.extra-box {
+    background-color: grey;
 }
