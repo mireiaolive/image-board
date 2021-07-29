@@ -60,13 +60,13 @@ h4 {
 .box {
     text-align: center;
     background-color: black;
-    padding: 20px;
-    width: 70%;
+    padding: 5px;
+    width: 50%;
     margin: auto;
     color: white;
     position: fixed;
-    top: 10%;
-    left: 15%;
+    top: 1%;
+    left: 25%;
     z-index: 1;
 }
 
@@ -119,5 +119,11 @@ p {
 }
 
 .extra-box {
+    background-color: grey;
+}
+
+.extra-box p {
+    color: black;
+    text-align: left;
     background-color: grey;
 }
