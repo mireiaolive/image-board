@@ -4,6 +4,19 @@
     box-sizing: border-box;
 }
 
+.font-pixel {
+    font-family: "Common Pixel", sans-serif;
+    font-size: 70px;
+}
+
+.square-pixel {
+    display: inline-block;
+    background-color: red;
+    width: 46px;
+    height: 46px;
+    margin-right: 10px;
+}
+
 img {
     width: 400px;
     height: 300px;
