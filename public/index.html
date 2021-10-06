@@ -5,21 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Imageboard</title>
    <link rel="stylesheet" href="/css/style.css">
-   <link href="http://fonts.cdnfonts.com/css/common-pixel" rel="stylesheet">
 </head>
 <body>
-<h1 class="font-pixel">I<div class="square-pixel"></div>PIXELS</h1>
-<h1>Add an image here now!</h1>
+    <div class="logo">
+            <img src="./assets/img_logo.png">
+    </div>
+    <div class="header">
+            <img src="./assets/img-1.jpg"class="img-profile"/>
+            <div class="settings">
+                <h1>Bruna_81</h1>
+                    <div class="profile-stats">
+                    <ul>
+                        <li><span class="profile-stat-count">164</span> posts</li>
+                        <li><span class="profile-stat-count">188k</span> followers</li>
+                        <li><span class="profile-stat-count">206</span> following</li>
+                    </ul>
+                </div>
+            </div>
+    </div>
     <div id='main'>
         <div class="form">
-            <label for="title">Title</label>    
-            <input v-model="title" name="title" id="title">
-            <label for="description">Description</label>    
-            <input v-model="description" name="description" id="description">
-            <label for="username">Username</label>    
-            <input v-model="username" name="username" id="username">
-            <input class="display" type="file" accept="image/*" @change="fileSelection"id="username">
-            <button class="display" @click="uploadImage">UPLOAD</button>
+            <input v-model="title" name="title" placeholder="Title" id="title"> 
+            <input v-model="description" name="description" placeholder="Description" id="description">
+            <input v-model="username" name="username" placeholder="Username" id="username">
+            <input type="file" accept="image/*" @change="fileSelection"id="username">
+            <button @click="uploadImage">UPLOAD</button>
         </div>
         
         
@@ -36,11 +46,11 @@
 
     <script id="my-component-template" type="text/x-template">
             <div class="box">
-                <h2 class="close" @click="sayParent">X</h2>
-                <img class="image-board" :src="url" alt="image board">
-                <h2>Title: {{title}}</h2>
-                <p>Description: {{description}}<p>
-                <p>Uploaded by {{username}} at {{created_at}}</p>
+                <h3 class="close" @click="sayParent">X</h3>
+                    <img class="image-board" :src="url" alt="image board">
+                    <p>Title: {{title}}</p>
+                    <p>Description: {{description}}<p>
+                    <p>Uploaded by {{username}} at {{created_at}}</p>
                 <com-component :comm-id="imageId"></com-component>
              </div>
     </script>
@@ -48,7 +58,6 @@
     <script id="com-template" type="text/x-template">
         <div class="another-box">
             <div class="form-comment">
-            <p class="align">Add a comment!</p>
             <label for="comment" class="label">Comment</label>   
             <input v-model="commentInput" name="comment" id="comment" placeholder="Username">
             <label for="username" class="label">Username</label>   

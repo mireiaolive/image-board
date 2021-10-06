@@ -102,7 +102,6 @@
             description: "",
             username: "",
             file: null,
-            name: "Latest Images",
             // properties we added to our data object
             selectImage: null,
         },
